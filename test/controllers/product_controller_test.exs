@@ -38,10 +38,19 @@ defmodule Test.ProductControllerTest do
     end
   end
 
-  test "fails to render page not found when id is nonexistent", %{conn: conn} do
+  test "fails on piped connections", %{conn: conn} do
     assert_error_sent 404, fn ->
       conn
       |> get(product_path(conn, :new))
+      |> get(product_path(conn, :show, -1))
+    end
+  end
+
+  test "same with recycle", %{conn: conn} do
+    assert_error_sent 404, fn ->
+      conn
+      |> get(product_path(conn, :new))
+      |> recycle()
       |> get(product_path(conn, :show, -1))
     end
   end

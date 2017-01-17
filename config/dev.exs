@@ -37,7 +37,7 @@ config :phoenix, :stacktrace_depth, 20
 config :test, Test.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",  
+  password: "3y7aSdogqX9WMDzcaLrn",  
   database: "test_dev",
   hostname: "localhost",
   pool_size: 10
